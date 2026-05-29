@@ -1,0 +1,11 @@
+@use "BaseStyle.scss";
+:root {
+  /* Forçando o Docusaurus a usar as suas cores base no Dark Mode */
+  [data-theme='dark'] {
+    --ifm-background-color: var(--bg-primary);
+    --ifm-background-surface-color: var(--bg-card);
+    --ifm-color-primary: var(--accent);
+    --ifm-text-color: var(--text-primary);
+    --ifm-menu-color: var(--text-secondary);
+  }
+}
