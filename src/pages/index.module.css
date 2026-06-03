@@ -4,20 +4,240 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
-  text-align: center;
   position: relative;
-  overflow: hidden;
-}
-
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
-}
-
-.buttons {
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  padding: 6rem 0 4rem;
+  text-align: center;
+  background: var(--bg-primary);
+}
+
+/* Background decorative elements */
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.heroOrb1 {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: -10%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(139, 140, 199, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(120px);
+  animation: pulse-glow 8s ease-in-out infinite alternate;
+}
+
+.heroOrb2 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  bottom: -5%;
+  left: -5%;
+  background: radial-gradient(circle, rgba(99, 99, 160, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(120px);
+  animation: pulse-glow 8s ease-in-out infinite alternate;
+  animation-delay: 4s;
+}
+
+.heroGridLines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(139, 140, 199, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 140, 199, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+}
+
+.heroNoise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+
+/* Content */
+.heroContent {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(139, 140, 199, 0.2);
+  padding: 8px 20px;
+  border-radius: 100px;
+  margin-bottom: 2rem;
+}
+
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.heroTitle {
+  font-family: var(--font-heading) !important;
+  font-size: clamp(3rem, 8vw, 5.5rem) !important;
+  font-weight: 300 !important;
+  line-height: 1.05 !important;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.heroTitleAccent {
+  color: var(--accent);
+}
+
+.heroTitleMuted {
+  color: var(--text-muted);
+}
+
+.heroSubtitle {
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* Buttons */
+.heroActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 36px;
+  background: var(--accent);
+  color: var(--bg-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: var(--font-body);
+}
+
+.btnPrimary:hover {
+  background: var(--accent-light);
+  color: var(--bg-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(139, 140, 199, 0.3);
+  text-decoration: none;
+}
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 36px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: var(--font-body);
+}
+
+.btnGhost:hover {
+  border-color: rgba(139, 140, 199, 0.2);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* Scroll indicator */
+.scrollIndicator {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 1.5s ease-in-out 1.5s forwards;
+  opacity: 0;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .heroBanner {
+    padding: 4rem 1.5rem 3rem;
+    min-height: 60vh;
+  }
+
+  .heroActions {
+    flex-direction: column;
+  }
+
+  .btnPrimary, .btnGhost {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }

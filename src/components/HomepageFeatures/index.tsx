@@ -1,57 +1,53 @@
 import type {ReactNode} from 'react';
-import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  icon: string;
   description: ReactNode;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Primeiros Passos',
+    icon: '⚡',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Configure e comece a usar o Quintilis em minutos.
+        Guias passo a passo para instalação e configuração inicial.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Referência de API',
+    icon: '⟨/⟩',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Documentação completa de todas as APIs, endpoints e métodos disponíveis.
+        Exemplos práticos e detalhes de implementação.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Comunidade',
+    icon: '◈',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Junte-se à comunidade do Quintilis.
+        Contribua com o projeto, reporte bugs e acompanhe o desenvolvimento.
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, icon, description}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
+    <div className={styles.pillarCard}>
+      <div className={styles.pillarIcon}>{icon}</div>
+      <Heading as="h3" className={styles.pillarTitle}>{title}</Heading>
+      <p className={styles.pillarDesc}>{description}</p>
+      <div className={styles.pillarLine} />
     </div>
   );
 }
@@ -60,7 +56,13 @@ export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="row">
+        <div className={styles.sectionHeader}>
+          <div className={styles.sectionTag}>Explore</div>
+          <Heading as="h2" className={styles.sectionTitle}>
+            O que você encontrará aqui
+          </Heading>
+        </div>
+        <div className={styles.pillarsGrid}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}

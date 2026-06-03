@@ -1,11 +1,110 @@
 .features {
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
+  padding: clamp(60px, 10vh, 120px) 0;
+  position: relative;
+  background: var(--bg-primary);
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sectionTag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading) !important;
+  font-size: clamp(2rem, 4.5vw, 3rem) !important;
+  font-weight: 300 !important;
+  color: var(--text-primary);
+  line-height: 1.15;
+}
+
+/* Card grid */
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.pillarCard {
+  position: relative;
+  background: var(--bg-card);
+  padding: 48px 40px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.pillarCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(139, 140, 199, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pillarCard:hover {
+  border-color: rgba(139, 140, 199, 0.2);
+  background: var(--bg-card-hover);
+}
+
+.pillarCard:hover::before {
+  opacity: 1;
+}
+
+.pillarCard:hover .pillarLine {
   width: 100%;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.pillarIcon {
+  color: var(--accent);
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+  font-size: 2rem;
+}
+
+.pillarTitle {
+  font-family: var(--font-heading) !important;
+  font-size: 1.5rem !important;
+  font-weight: 400 !important;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.pillarDesc {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 1;
+  font-weight: 300;
+}
+
+.pillarLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .pillarsGrid {
+    grid-template-columns: 1fr;
+  }
 }
