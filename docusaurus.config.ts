@@ -3,7 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'Quintilis',
+  title: 'Quintilis - Documentação',
   tagline: 'Documentação Oficial',
   favicon: 'img/favicon.ico',
 
